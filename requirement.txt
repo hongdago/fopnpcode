@@ -1,5 +1,7 @@
 certifi==2017.11.5
 chardet==3.0.4
+dnspython==1.15.0
+dnspython3==1.15.0
 idna==2.6
 pygeocoder==1.2.5
 requests==2.18.4
