@@ -1,0 +1,25 @@
+
+    >>> from urllib.parse import urljoin
+    >>> base = 'http://tool.ietf.org/html/rfc3986'
+    >>> urljoin(base, 'rfc7320')
+    'http://tool.ietf.org/html/rfc7320'
+    >>> urljoin(base, '.')
+    'http://tool.ietf.org/html/'
+    >>> urljoin(base, '..')
+    'http://tool.ietf.org/'
+    >>> urljoin(base, '/dailydose/')
+    'http://tool.ietf.org/dailydose/'
+    >>> urljoin(base, '?version=1.0')
+    'http://tool.ietf.org/html/rfc3986?version=1.0'
+    >>> urljoin(base, '#section-5.4')
+    'http://tool.ietf.org/html/rfc3986#section-5.4'
+    >>> urljoin(base, 'https://www.google.com/search?q=apod&btnI=yes')
+    'https://www.google.com/search?q=apod&btnI=yes'
+
+    >>> urljoin(base, '//www.google.com/search?q=apod&btnI=yes')
+    'http://www.google.com/search?q=apod&btnI=yes'
+    >>> urljoin('http://tool.ietf.org/html/rfc3986', 'rfc7320')
+    'http://tool.ietf.org/html/rfc7320'
+    >>> urljoin('http://tool.ietf.org/html/rfc3986/', 'rfc7320')
+    'http://tool.ietf.org/html/rfc3986/rfc7320'
+

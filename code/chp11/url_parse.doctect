@@ -1,0 +1,50 @@
+
+    >>> from urllib.parse import urlsplit
+    >>> u = urlsplit('https://www.google.com/search?q=apod&btnI=yes')
+    >>> tuple(u)
+    ('https', 'www.google.com', '/search', 'q=apod&btnI=yes', '')
+    >>> u.scheme
+    'https'
+    >>> u.netloc
+    'www.google.com'
+    >>> u.path
+    '/search'
+    >>> u.query
+    'q=apod&btnI=yes'
+    >>> u.fragment
+    ''
+
+
+    >>> u = urlsplit('https://brandon:atigdng@localhost:8000/')
+    >>> u.netloc
+    'brandon:atigdng@localhost:8000'
+    >>> u.username
+    'brandon'
+    >>> u.password
+    'atigdng'
+    >>> u.hostname
+    'localhost'
+    >>> u.port
+    8000
+
+    >>> from urllib.parse import urlsplit, parse_qs, parse_qsl , unquote
+    >>> u = urlsplit('http://example.com/0%26A/TCP%2FIP?q=packet+loss')
+    >>> path = [unquote(s) for s in u.path.split('/')]
+    >>> query = parse_qsl(u.query)
+    >>> path
+    ['', '0&A', 'TCP/IP']
+    >>> query
+    [('q', 'packet loss')]
+    >>> parse_qs(u.query)
+    {'q': ['packet loss']}
+
+
+    >>> from urllib.parse import quote, urlencode, urlunsplit
+    >>> urlunsplit(('http', 'example.com', '/'.join(quote(p, safe='') for p in path), urlencode(query),''))
+    'http://example.com/0%26A/TCP%2FIP?q=packet+loss'
+
+
+    >>> quote('0&A/TCP IP')
+    '0%26A/TCP%20IP'
+    >>> unquote('0%26A/TCP%20IP')
+    '0&A/TCP IP'

@@ -6,3 +6,6 @@ lib64
 pip-selfcheck.json
 __pycache__/
 *.pyc
+selenium/
+*.log
+*.db
